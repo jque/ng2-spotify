@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { AppHeaderComponent } from './app-header/app-header.component';
 import { AlbumsListComponent } from './albums-list/albums-list.component';
 import { AlbumsDetailComponent } from './albums-detail/albums-detail.component';
 import { routing } from './app.routing';
@@ -11,6 +12,7 @@ import { routing } from './app.routing';
 @NgModule({
   declarations: [
     AppComponent,
+    AppHeaderComponent,
     AlbumsListComponent,
     AlbumsDetailComponent
   ],
