@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,21 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class AppHeaderComponent implements OnInit {
 
-  constructor(public formBuilder: FormBuilder) { }
+  public form: FormGroup;
+
+  constructor(public formBuilder: FormBuilder, public router: Router) { }
 
   ngOnInit(): void {
+
+    this.form = this.formBuilder.group({
+      search: ['', <any>Validators.required]
+    });
   }
 
   submit(): void {
+    if (this.form.valid) {
+      const value: string = this.form.value.search.trim();
+      this.router.navigate(['/search', {q: value}]);
+    }
   }
 }
